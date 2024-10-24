@@ -1,6 +1,6 @@
-- Merit Stutent of SJTU, 2024
+- Merit Student of SJTU, 2024.
 
-- Natitional Scholarship, 2024
+- Natitional Scholarship, 2024.
 
 - Zhiyuan Honor Scholarship, 2023.
 
