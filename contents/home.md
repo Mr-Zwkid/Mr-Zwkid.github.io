@@ -2,7 +2,11 @@
 
 [![Mr-Zwkid](https://img.shields.io/badge/Mr_Zwkid-github-blue?logo=github)](https://github.com/Mr-Zwkid)
 
-Currently, I am an undergraduate majoring in **Information Engineering** from the Department of EE at Shanghai Jiao Tong University. As a member of the Yucai Project, I'm currently carrying research as an intern in [SJTU Media Lab](https://medialab.sjtu.edu.cn/) under the supervision of Ass.Prof. [Zhengxue Cheng](https://medialab.sjtu.edu.cn/author/zhengxue-cheng/) and Prof. [Li Song](https://medialab.sjtu.edu.cn/author/li-song/).
+Hello, I am Wenkang Zhang(张文康), a 3rd-year undergraduate student majoring in Information Engineering (EE) from [Shanghai Jiao Tong University](https://www.sjtu.edu.cn/). I'm currently carrying research as an intern in [SJTU Media Lab](https://medialab.sjtu.edu.cn/), supervised by Prof. [Zhengxue Cheng](https://medialab.sjtu.edu.cn/author/zhengxue-cheng/) and Prof. [Li Song](https://medialab.sjtu.edu.cn/author/li-song/). I'm working on 3D scene reconstrcution (mainly using 3DGS) and its extensions (dynamic scene, compact representation, et al.)
+
+Previously, I participated in a school-level research project (PRP) that focuses on robotic grasping detection using RGBD images in the perceptual domain, advised by Prof. [Xinwu Liang](https://www.aero.sjtu.edu.cn/szdw/szml/51).
+
+I am looking for a PhD/Master position in this application season!
 
 #### Email
 conquer.wkzhang@sjtu.edu.cn 
@@ -11,8 +15,9 @@ conquer.wkzhang@sjtu.edu.cn
 B.E., Information Engineering, Shanghai Jiao Tong University, 2026 (expected).
 
 #### Research Interests
-3D Gaussian Splatting; Compression for 3DGS; Embodied AI
+3D Vision; Learing-based Compression; Embodied AI;
 
-#### Current Dynamics
-[CLICK HERE TO SEE MORE!](https://notes.sjtu.edu.cn/s/KXi6h8u-b)
+#### News
+To Be Explored~
+<!-- [CLICK HERE TO SEE MORE!](https://notes.sjtu.edu.cn/s/KXi6h8u-b) -->
 
