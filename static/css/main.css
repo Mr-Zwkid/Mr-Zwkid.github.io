@@ -109,4 +109,9 @@ section .main-body{
     }
 }
 
+.container {
+    padding-left: 2rem; /* 增加左侧内边距 */
+    padding-right: 2rem; /* 增加右侧内边距 */
+}
+
 
