@@ -7,7 +7,7 @@ Hello, I am Wenkang Zhang(张文康), a 3rd-year undergraduate student majoring 
 
 Previously, I participated in a school-level research project (PRP) that focuses on robotic grasping detection using RGBD images in the perceptual domain, advised by Prof. [Xinwu Liang](https://www.aero.sjtu.edu.cn/szdw/szml/51).
 
-I am looking for a PhD/Master position in this application season! :punch:🎓:fire:
+I am looking for a PhD/Master position in this application season! 👊🎓🔥
 
 
 #### Education
@@ -17,6 +17,6 @@ B.E., Information Engineering, Shanghai Jiao Tong University, 2026 (expected).
 3D Vision; Learning-based Compression; Embodied AI;
 
 #### News
-To Be Explored :muscle:
+To Be Explored 💪
 <!-- [CLICK HERE TO SEE MORE!](https://notes.sjtu.edu.cn/s/KXi6h8u-b) -->
 
