@@ -19,4 +19,3 @@ B.E., Information Engineering, Shanghai Jiao Tong University, 2026 (expected).
 #### News
 To Be Explored 💪
 <!-- [CLICK HERE TO SEE MORE!](https://notes.sjtu.edu.cn/s/KXi6h8u-b) -->
-
