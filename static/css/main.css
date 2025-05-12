@@ -114,4 +114,12 @@ section .main-body{
     padding-right: 2rem; /* 增加右侧内边距 */
 }
 
+/* Remove underline from links in home section */
+#home a {
+    text-decoration: none;
+}
+#home a:hover {
+    text-decoration: none;
+}
+
 
