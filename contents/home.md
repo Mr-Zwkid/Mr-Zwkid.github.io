@@ -14,8 +14,8 @@ I am looking for a PhD/Master position in this application season! 👊🎓🔥
 B.E., Information Engineering, Shanghai Jiao Tong University, 2026 (expected).
 
 #### Research Interests
-3D Vision; Learning-based Compression; Embodied AI;
+3D Vision; Embodied AI; World Model; Learning-based Compression;
 
 #### News
-To Be Explored 💪
+To Be Explored
 <!-- [CLICK HERE TO SEE MORE!](https://notes.sjtu.edu.cn/s/KXi6h8u-b) -->
