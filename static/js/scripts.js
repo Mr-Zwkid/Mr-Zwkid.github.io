@@ -58,8 +58,40 @@ window.addEventListener('DOMContentLoaded', event => {
             }).then(() => {
                 // MathJax
                 MathJax.typeset();
+                
+                // Initialize publication filters after content is loaded
+                if (name === 'publications') {
+                    initPublicationFilters();
+                }
             })
             .catch(error => console.log(error));
     })
 
 }); 
+
+// Publication filters functionality
+function initPublicationFilters() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const publicationRows = document.querySelectorAll('.publications-table tr');
+    
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active class from all buttons
+            filterBtns.forEach(b => b.classList.remove('active'));
+            // Add active class to clicked button
+            btn.classList.add('active');
+            
+            const filter = btn.getAttribute('data-filter');
+            
+            publicationRows.forEach(row => {
+                if (filter === 'all') {
+                    row.style.display = '';
+                } else {
+                    // This is a simple implementation - you can enhance it based on your needs
+                    // For now, show all rows when any filter is selected
+                    row.style.display = '';
+                }
+            });
+        });
+    });
+}

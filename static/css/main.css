@@ -122,4 +122,150 @@ section .main-body{
     text-decoration: none;
 }
 
+/* Publications Section Styles - Table Layout */
+.publication-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+}
+
+.filter-btn {
+    padding: 0.5rem 1rem;
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--h-title-color);
+    color: white;
+    border-color: var(--h-title-color);
+}
+
+.publications-table {
+    width: 100%;
+}
+
+.publications-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+}
+
+.publications-table td {
+    padding: 1.5rem;
+    vertical-align: top;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.publications-table td:first-child {
+    width: 200px;
+    padding-right: 2rem;
+}
+
+.publications-table img {
+    width: 160px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.publications-table img:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.publications-table td:last-child {
+    line-height: 1.6;
+}
+
+.publications-table strong {
+    font-size: 1.1rem;
+    color: var(--h-title-color);
+    display: block;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+}
+
+.publications-table .author-me {
+    font-weight: bold;
+    color: var(--h-title-color);
+}
+
+.publications-table em {
+    color: #666;
+    font-style: italic;
+    display: block;
+    margin: 0.3rem 0;
+}
+
+.publications-table a {
+    color: var(--h-title-color);
+    text-decoration: none;
+    margin-right: 0.8rem;
+    font-size: 0.9rem;
+}
+
+.publications-table a:hover {
+    text-decoration: underline;
+}
+
+/* Awards section */
+.publications-table ul {
+    list-style: none;
+    padding: 0;
+}
+
+.publications-table li {
+    margin-bottom: 0.5rem;
+    padding-left: 1rem;
+    position: relative;
+}
+
+.publications-table li:before {
+    content: "•";
+    color: var(--h-title-color);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .publications-table td:first-child {
+        width: 120px;
+        padding-right: 1rem;
+    }
+    
+    .publications-table img {
+        width: 100px;
+        height: 75px;
+    }
+    
+    .filter-btn {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+    }
+    
+    .publications-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    
+    .publications-table table {
+        width: 100%;
+        min-width: 600px;
+    }
+}
+
 
