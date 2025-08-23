@@ -161,13 +161,13 @@ section .main-body{
 
 .publications-table td {
     padding: 1.25rem 1.5rem;
-    vertical-align: middle; /* 图片与文本垂直居中，更协调 */
+    vertical-align: top; /* 与图片顶部对齐 */
     border-bottom: 1px solid #e9ecef;
 }
 
 .publications-table td:first-child {
     width: 200px;              /* 控制图片列宽度 */
-    padding-right: 1.75rem;    /* 图片与文字间距 */
+    padding-right: 1.1rem;     /* 缩小图片与文字的间距 */
 }
 
 .publications-table img {
@@ -190,16 +190,16 @@ section .main-body{
 }
 
 .publications-table strong {
-    font-size: 1.1rem;
+    font-size: 1.35rem;        /* 放大论文标题 */
     color: var(--h-title-color);
     display: block;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.35rem;
     line-height: 1.3;
 }
 
 .publications-table .author-me {
-    font-weight: 700;          /* 仅加粗，不改变颜色 */
-    color: inherit;
+    font-weight: 700;
+    color: var(--h-title-color); /* Wenkang Zhang 使用站点主题蓝色 */
 }
 
 .publications-table em {
