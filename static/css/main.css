@@ -190,29 +190,30 @@ section .main-body{
 }
 
 .publications-table strong {
-    font-size: 1.35rem;        /* 放大论文标题 */
+    font-size: 1.35rem;
     color: var(--h-title-color);
     display: block;
-    margin-bottom: 0.35rem;
-    line-height: 1.3;
+    margin-bottom: 0.18rem;    /* 标题下方距离更紧凑 */
+    line-height: 1.22;
 }
 
 .publications-table .author-me {
     font-weight: 700;
-    color: var(--h-title-color); /* Wenkang Zhang 使用站点主题蓝色 */
+    color: var(--h-title-color);
+    margin-bottom: 0.12rem;    /* 作者下方距离更紧凑 */
 }
 
 .publications-table em {
     color: #666;
     font-style: italic;
     display: block;
-    margin: 0.3rem 0;
+    margin: 0.15rem 0;         /* 年份下方距离更紧凑 */
 }
 
 .publications-table a {
     color: var(--h-title-color);
     text-decoration: none;
-    margin-right: 0.8rem;
+    margin-right: 0.6rem;      /* 链接之间距离更紧凑 */
     font-size: 0.9rem;
 }
 
