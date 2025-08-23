@@ -186,11 +186,11 @@ section .main-body{
 }
 
 .publications-table td:last-child {
-    line-height: 1.7;          /* 提升可读性 */
+    line-height: 0.5;          /* 提升可读性 */
 }
 
 .publications-table strong {
-    font-size: 1.35rem;
+    font-size: 1.45rem;
     color: var(--h-title-color);
     display: block;
     margin-bottom: 0.18rem;    /* 标题下方距离更紧凑 */
