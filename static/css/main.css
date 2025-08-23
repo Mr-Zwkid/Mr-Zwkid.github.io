@@ -160,22 +160,23 @@ section .main-body{
 }
 
 .publications-table td {
-    padding: 1.5rem;
-    vertical-align: top;
+    padding: 1.25rem 1.5rem;
+    vertical-align: middle; /* 图片与文本垂直居中，更协调 */
     border-bottom: 1px solid #e9ecef;
 }
 
 .publications-table td:first-child {
-    width: 200px;
-    padding-right: 2rem;
+    width: 200px;              /* 控制图片列宽度 */
+    padding-right: 1.75rem;    /* 图片与文字间距 */
 }
 
 .publications-table img {
-    width: 160px;
+    width: 180px;              /* 统一图片尺寸，略大但不挤占文本 */
     height: 120px;
     object-fit: cover;
     border-radius: 6px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: block;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -185,20 +186,20 @@ section .main-body{
 }
 
 .publications-table td:last-child {
-    line-height: 1.6;
+    line-height: 1.7;          /* 提升可读性 */
 }
 
 .publications-table strong {
     font-size: 1.1rem;
     color: var(--h-title-color);
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
     line-height: 1.3;
 }
 
 .publications-table .author-me {
-    font-weight: bold;
-    color: var(--h-title-color);
+    font-weight: 700;          /* 仅加粗，不改变颜色 */
+    color: inherit;
 }
 
 .publications-table em {
@@ -217,6 +218,11 @@ section .main-body{
 
 .publications-table a:hover {
     text-decoration: underline;
+}
+
+/* 行 hover 高亮，提升分辨性 */
+.publications-table tr:hover td {
+    background: #fafafa;
 }
 
 /* Awards section */
@@ -242,13 +248,13 @@ section .main-body{
 /* Responsive design */
 @media (max-width: 768px) {
     .publications-table td:first-child {
-        width: 120px;
+        width: 140px;          /* 移动端更紧凑 */
         padding-right: 1rem;
     }
     
     .publications-table img {
-        width: 100px;
-        height: 75px;
+        width: 120px;          /* 提升移动端清晰度 */
+        height: 90px;
     }
     
     .filter-btn {
@@ -256,15 +262,11 @@ section .main-body{
         padding: 0.4rem 0.8rem;
     }
     
+    /* 仍保留横向滚动的兜底，避免表格在小屏过度拥挤 */
     .publications-table {
         display: block;
         overflow-x: auto;
-        white-space: nowrap;
-    }
-    
-    .publications-table table {
-        width: 100%;
-        min-width: 600px;
+        -webkit-overflow-scrolling: touch;
     }
 }
 
