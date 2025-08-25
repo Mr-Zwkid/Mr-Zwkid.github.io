@@ -1,3 +1,10 @@
+/* 让 publications-table 区域内 <br> 换行无额外间距 */
+.publications-table br {
+    display: block;
+    margin: 0;
+    line-height: 0;
+    height: 0;
+}
 @import "./styles.css";
 
 
