@@ -10,6 +10,7 @@
 
 :root{
     --h-title-color:#3948d2;
+    --content-max-width: 1200px; /* 统一内容列宽 */
 }
 
 .header {
@@ -59,6 +60,14 @@ section .main-body{
     font-size: 1.3rem;
     font-weight: 200;
     line-height: 2.4rem;
+}
+
+/* 统一各模块(header 与内容)的列宽 */
+section .container > header,
+section .container > .main-body{
+    max-width: var(--content-max-width);
+    margin-left: auto;
+    margin-right: auto;
 }
 
 
@@ -280,7 +289,7 @@ section .main-body{
 
 /* Publications Section Styles - Jon Barron Style */
 .publications-list {
-    max-width: 1200px;
+    max-width: var(--content-max-width);
     margin: 0 auto;
 }
 
@@ -312,7 +321,7 @@ section .main-body{
 }
 
 .pub-title {
-    font-size: 1.1rem;
+    font-size: 1.3rem; /* 与其他模块主文一致 */
     font-weight: 600;
     color: var(--h-title-color);
     line-height: 1.3;
@@ -320,27 +329,28 @@ section .main-body{
 }
 
 .pub-authors {
-    font-size: 0.95rem;
+    font-size: 1.3rem; /* 统一字号 */
     color: #555;
-    line-height: 1.4;
-    margin-bottom: 0.2rem;
+    line-height: 1.3;
+    margin-bottom: 0.18rem;
 }
 
 .pub-venue {
-    font-size: 0.9rem;
+    font-size: 1.3rem; /* 统一字号 */
     color: #777;
     font-style: italic;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.2rem;
 }
 
 .pub-links {
-    font-size: 0.9rem;
+    font-size: 1.3rem; /* 统一字号 */
 }
 
 .pub-links a {
     color: var(--h-title-color);
     text-decoration: none;
     margin-right: 0.5rem;
+    font-size: inherit; /* 与父级统一 */
 }
 
 .pub-links a:hover {
