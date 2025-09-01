@@ -200,28 +200,28 @@ section .main-body{
     font-size: 1.45rem;
     color: var(--h-title-color);
     display: block;
-    margin-bottom: 0.18rem;    /* 标题下方距离更紧凑 */
+    margin-bottom: 0.05rem;    /* 标题与作者间距更小 */
     line-height: 1.22;
 }
 
 .publications-table .author-me {
     font-weight: 700;
     color: var(--h-title-color);
-    margin-bottom: 0.12rem;    /* 作者下方距离更紧凑 */
+    margin-bottom: 0.05rem;    /* 作者下方距离更小 */
 }
 
 .publications-table em {
     color: #666;
     font-style: italic;
     display: block;
-    margin: 0.15rem 0;         /* 年份下方距离更紧凑 */
+    margin: 0.05rem 0;         /* 年份上下距离更小 */
 }
 
 .publications-table a {
     color: var(--h-title-color);
     text-decoration: none;
     margin-right: 0.6rem;      /* 链接之间距离更紧凑 */
-    font-size: 0.9rem;
+    font-size: 1.05rem;        /* 增大arXiv链接字体 */
 }
 
 .publications-table a:hover {
