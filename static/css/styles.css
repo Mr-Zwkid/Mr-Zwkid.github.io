@@ -60,7 +60,7 @@
   --bs-body-font-family: Mulish, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   --bs-body-font-size: 1rem;
   --bs-body-font-weight: 500;
-  --bs-body-line-height: 1.5;
+  --bs-body-line-height: 1.2;
   --bs-body-color: #212529;
   --bs-body-bg: #fff;
   --bs-border-width: 1px;
@@ -94,7 +94,7 @@
 body {
     margin: 0 3rem; /* 增加两侧留白 */
     font-family: 'Times New Roman', Times, serif; /* 设置字体 */
-    line-height: 1.4; /* 调整行间距 */
+    line-height: 1.2; /* 缩小全局行间距 */
     font-size: var(--bs-body-font-size);
     font-weight: var(--bs-body-font-weight);
     color: var(--bs-body-color);
@@ -10909,6 +10909,18 @@ footer a:hover, footer a:active, footer a:focus {
   text-decoration: underline;
 }
 
+/* 全局缩小换行间距 */
+br {
+    display: block;
+    margin: 0;
+    line-height: 0.5;
+    height: 0.3em;
+}
+
+/* 段落间距也缩小 */
+p {
+    margin-bottom: 0.8rem;
+}
 
 
 
