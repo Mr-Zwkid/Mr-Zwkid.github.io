@@ -2,8 +2,8 @@
 .publications-table br {
     display: block;
     margin: 0;
-    line-height: 0;
-    height: 0;
+    line-height: 0.3;
+    height: 0.2em;
 }
 @import "./styles.css";
 
@@ -193,7 +193,7 @@ section .main-body{
 }
 
 .publications-table td:last-child {
-    line-height: 0.5;          /* 提升可读性 */
+    line-height: 1.22;          /* 提升可读性 */
 }
 
 .publications-table strong {
