@@ -564,7 +564,7 @@ section .container > .main-body{
     display: flex;
     justify-content: center;
     gap: 1.2rem;
-    margin: 2.5rem 0;
+    margin: 1rem 0 2rem 0; /* 减少上边距，增加下边距 */
     flex-wrap: wrap;
 }
 

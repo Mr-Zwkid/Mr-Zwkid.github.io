@@ -1,11 +1,10 @@
 
-
 <div class="social-icons">
     <a href="mailto:conquer.wkzhang@sjtu.edu.cn" class="social-icon" title="Email">
         <i class="bi bi-envelope-fill"></i>
     </a>
     <a href="https://scholar.google.com/citations?user=-WwtynYAAAAJ" class="social-icon" title="Google Scholar">
-        <i class="bi bi-mortarboard-fill"></i>
+        <i class="bi bi-google"></i>
     </a>
     <a href="https://github.com/Mr-Zwkid" class="social-icon" title="GitHub">
         <i class="bi bi-github"></i>
