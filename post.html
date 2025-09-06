@@ -83,15 +83,18 @@
         return r.text();
       }).then(text=>{
         let title = '', date = '';
-        if (text.startsWith('---')){
-          const end = text.indexOf('\n---', 3);
+        // normalize line endings to handle CRLF
+        const norm = text.replace(/\r\n/g,'\n');
+        let content = norm;
+        if (norm.startsWith('---')){
+          const end = norm.indexOf('\n---', 3);
           if (end !== -1){
-            const fm = text.slice(3, end).trim();
-            const body = text.slice(end+4);
-            try{ const y = jsyaml.load(fm) || {}; title = y.title||''; date = y.date||''; text = body; }catch{}
+            const fm = norm.slice(3, end).trim();
+            content = norm.slice(end+4);
+            try{ const y = jsyaml.load(fm) || {}; title = y.title||''; date = y.date||''; }catch{}
           }
         }
-        const html = marked.parse(text);
+        const html = marked.parse(content);
         document.getElementById('body-el').innerHTML = html;
         if (title){ document.getElementById('title-el').textContent = title; document.title = `${title} | Wenkang Zhang`; }
         if (date){ document.getElementById('meta-el').textContent = new Date(date).toLocaleDateString(); }

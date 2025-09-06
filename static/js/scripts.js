@@ -49,21 +49,21 @@ window.addEventListener('DOMContentLoaded', event => {
 
     // Marked
     marked.use({ mangle: false, headerIds: false })
-    section_names.forEach((name, idx) => {
+    section_names.forEach((name) => {
+        const container = document.getElementById(name + '-md');
+        if (!container) return; // only fetch when container exists on the page
         fetch(content_dir + name + '.md')
             .then(response => response.text())
             .then(markdown => {
                 const html = marked.parse(markdown);
-                document.getElementById(name + '-md').innerHTML = html;
+                container.innerHTML = html;
             }).then(() => {
                 // MathJax
-                MathJax.typeset();
-                
+                if (window.MathJax && MathJax.typeset) MathJax.typeset();
                 // Initialize publication filters after content is loaded
                 if (name === 'publications') {
                     initPublicationFilters();
                 }
-                // no-op
             })
             .catch(error => console.log(error));
     })
@@ -113,7 +113,7 @@ function loadBlogList() {
             }
             // sort by date desc if present
             posts.sort((a, b) => (new Date(b.date || 0)) - (new Date(a.date || 0)));
-            blogListEl.innerHTML = posts.map(renderPostCard).join('') || '<p>No posts yet.</p>';
+        blogListEl.innerHTML = posts.map(renderPostCard).join('') || '<p>No posts yet.</p>';
         })
         .catch(() => blogListEl.innerHTML = '<p>No posts yet.</p>');
 }
@@ -123,7 +123,7 @@ function renderPostCard(p) {
     const date = p.date ? new Date(p.date).toLocaleDateString() : '';
     const desc = escapeHtml(p.summary || p.excerpt || '');
     const tags = (p.tags || []).map(t => `<span class="tag">${escapeHtml(t)}</span>`).join('');
-    const link = p.link || p.url || '#';
+    const link = p.link || p.url || (p.slug ? `post.html?slug=${encodeURIComponent(p.slug)}` : '#');
     return `
     <article class="blog-card">
         <div class="blog-card-body">

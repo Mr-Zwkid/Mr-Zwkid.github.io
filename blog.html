@@ -18,7 +18,7 @@
   <script type="text/javascript" src="static/js/js-yaml.min.js"></script>
   <script type="text/javascript" src="static/js/marked.min.js"></script>
   <script>
-    MathJax = { tex: { inlineMath: [['$','$'], ['\\(','\\)']], displayMath: [['$$','$$'], ['\\[','\\]']] } };
+    MathJax = { tex: { inlineMath: [["$","$"], ["\\(","\\)"]], displayMath: [["$$","$$"], ["\\[","\\]"]] } };
   </script>
   <script type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
   <script type="text/javascript" src="static/js/scripts.js"></script>
@@ -64,10 +64,8 @@
   <script>
     // Render blog list on this standalone page
     document.addEventListener('DOMContentLoaded', function(){
-      if (typeof loadBlogList === 'function') {
-        loadBlogList();
-      }
-      // Also load config.yml to fill copyright etc.
+      try { if (typeof loadBlogList === 'function') loadBlogList(); } catch(e) {}
+      // load config.yml to fill copyright etc.
       fetch('contents/config.yml').then(r=>r.text()).then(text=>{
         const yml = jsyaml.load(text) || {}; 
         Object.keys(yml).forEach(k=>{ const el = document.getElementById(k); if (el) el.innerHTML = yml[k]; });
