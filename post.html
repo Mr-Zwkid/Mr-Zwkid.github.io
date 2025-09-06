@@ -63,10 +63,8 @@
   </footer>
 
   <script>
-    // Helper to get query param
-    function getParam(name){ return new URLSearchParams(location.search).get(name); }
     const slug = getParam('slug');
-  const mdUrl = slug ? `posts/${slug}.md` : '';
+    const mdUrl = slug ? `posts/${slug}.md` : '';
 
     // Load config to fill footer
     fetch('contents/config.yml').then(r=>r.text()).then(text=>{
@@ -77,19 +75,12 @@
     if (!slug){
       document.getElementById('body-el').innerHTML = '<p>Missing slug parameter.</p>';
     } else {
-      // Try to read front-matter first line block (optional), then render markdown
-      const candidates = mdUrl ? [mdUrl, `./${mdUrl}`, `/${mdUrl}`] : [];
-      function fetchSequential(urls){
-        let i = 0;
-        function next(){
-          if (i >= urls.length) throw new Error('Not found');
-          const url = urls[i++];
-          return fetch(url).then(r => r.ok ? r.text() : next()).catch(() => next());
+      fetch(mdUrl).then(response => {
+        if (!response.ok) {
+          throw new Error('Post not found.');
         }
-        return next();
-      }
-
-      fetchSequential(candidates).then(text=>{
+        return response.text();
+      }).then(text=>{
         let title = '', date = '';
         // normalize line endings to handle CRLF
         const norm = text.replace(/\r\n/g,'\n');
@@ -108,7 +99,7 @@
         if (date){ document.getElementById('meta-el').textContent = new Date(date).toLocaleDateString(); }
         if (window.MathJax) MathJax.typeset();
       }).catch(err=>{
-        document.getElementById('body-el').innerHTML = '<p>Post not found.</p>';
+        document.getElementById('body-el').innerHTML = `<p>Error loading post: ${err.message}</p>`;
       });
     }
   </script>
