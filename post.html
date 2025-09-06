@@ -66,7 +66,7 @@
     // Helper to get query param
     function getParam(name){ return new URLSearchParams(location.search).get(name); }
     const slug = getParam('slug');
-    const mdUrl = slug ? `posts/${slug}.md` : '';
+  const mdUrl = slug ? `posts/${slug}.md` : '';
 
     // Load config to fill footer
     fetch('contents/config.yml').then(r=>r.text()).then(text=>{
@@ -78,10 +78,18 @@
       document.getElementById('body-el').innerHTML = '<p>Missing slug parameter.</p>';
     } else {
       // Try to read front-matter first line block (optional), then render markdown
-      fetch(mdUrl).then(r=>{
-        if(!r.ok) throw new Error('Not found');
-        return r.text();
-      }).then(text=>{
+      const candidates = mdUrl ? [mdUrl, `./${mdUrl}`, `/${mdUrl}`] : [];
+      function fetchSequential(urls){
+        let i = 0;
+        function next(){
+          if (i >= urls.length) throw new Error('Not found');
+          const url = urls[i++];
+          return fetch(url).then(r => r.ok ? r.text() : next()).catch(() => next());
+        }
+        return next();
+      }
+
+      fetchSequential(candidates).then(text=>{
         let title = '', date = '';
         // normalize line endings to handle CRLF
         const norm = text.replace(/\r\n/g,'\n');
