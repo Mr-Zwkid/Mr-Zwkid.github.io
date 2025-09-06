@@ -2,7 +2,7 @@
 
 const content_dir = 'contents/'
 const config_file = 'config.yml'
-const section_names = ['home', 'publications', 'awards', 'blog']
+const section_names = ['home', 'publications', 'awards']
 
 
 window.addEventListener('DOMContentLoaded', event => {
@@ -63,10 +63,7 @@ window.addEventListener('DOMContentLoaded', event => {
                 if (name === 'publications') {
                     initPublicationFilters();
                 }
-                // Load blog list after blog markdown is injected
-                if (name === 'blog') {
-                    loadBlogList();
-                }
+                // no-op
             })
             .catch(error => console.log(error));
     })

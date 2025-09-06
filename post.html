@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="Post" />
+  <title id="post-title">Post</title>
+  <link rel="icon" type="image/x-icon" href="static/assets/favicon.ico" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
+  <link type="text/css" href="static/css/styles.css" rel="stylesheet" />
+  <link type="text/css" href="static/css/main.css" rel="stylesheet" />
+  <script type="text/javascript" src="static/js/bootstrap.bundle.min.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script type="text/javascript" src="static/js/js-yaml.min.js"></script>
+  <script type="text/javascript" src="static/js/marked.min.js"></script>
+  <script>
+    MathJax = { tex: { inlineMath: [['$','$'], ['\\(','\\)']], displayMath: [['$$','$$'], ['\\[','\\]']] } };
+  </script>
+  <script type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <script type="text/javascript" src="static/js/scripts.js"></script>
+  <style>
+    .post-container{max-width:900px;margin:8rem auto 4rem;padding:0 1.25rem;}
+    .post-title{font-size:2.1rem;color:var(--h-title-color);margin-bottom:.5rem}
+    .post-meta{color:#666;margin-bottom:1.5rem}
+    .post-body{font-size:1.15rem;line-height:1.7}
+    .post-body img{max-width:100%;height:auto}
+  </style>
+</head>
+<body>
+  <nav class="header navbar navbar-expand-lg navbar-light fixed-top shadow-sm" id="mainNav">
+    <div class="container px-5">
+      <a class="navbar-brand fw-bold" href="index.html#page-top">Wenkang Zhang</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">MENU <i class="bi-list"></i></button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
+          <li class="nav-item"><a class="nav-link me-lg-3" href="index.html#page-top">ABOUT</a></li>
+          <li class="nav-item"><a class="nav-link me-lg-3" href="blog.html">BLOG</a></li>
+          <li class="nav-item"><a class="nav-link me-lg-3" href="static/assets/CV_WenkangZhang.pdf" target="_blank">CV</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="post-container">
+    <h1 class="post-title" id="title-el">Post</h1>
+    <div class="post-meta" id="meta-el"></div>
+    <article class="post-body" id="body-el"></article>
+  </main>
+
+  <footer class="bg-bottom text-center py-5">
+    <div class="container px-5">
+      <div class="text-white-50 small">
+        <div id="copyright-text" class="mb-2"></div>
+        <a id="github-link" href="https://github.com/Mr-Zwkid">Github</a>
+        <span class="mx-1">&middot;</span>
+        <a id="license-link" href="LICENSE">License</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Helper to get query param
+    function getParam(name){ return new URLSearchParams(location.search).get(name); }
+    const slug = getParam('slug');
+    const mdUrl = slug ? `posts/${slug}.md` : '';
+
+    // Load config to fill footer
+    fetch('contents/config.yml').then(r=>r.text()).then(text=>{
+      const yml = jsyaml.load(text) || {}; 
+      Object.keys(yml).forEach(k=>{ const el = document.getElementById(k); if (el) el.innerHTML = yml[k]; });
+    }).catch(()=>{});
+
+    if (!slug){
+      document.getElementById('body-el').innerHTML = '<p>Missing slug parameter.</p>';
+    } else {
+      // Try to read front-matter first line block (optional), then render markdown
+      fetch(mdUrl).then(r=>{
+        if(!r.ok) throw new Error('Not found');
+        return r.text();
+      }).then(text=>{
+        let title = '', date = '';
+        if (text.startsWith('---')){
+          const end = text.indexOf('\n---', 3);
+          if (end !== -1){
+            const fm = text.slice(3, end).trim();
+            const body = text.slice(end+4);
+            try{ const y = jsyaml.load(fm) || {}; title = y.title||''; date = y.date||''; text = body; }catch{}
+          }
+        }
+        const html = marked.parse(text);
+        document.getElementById('body-el').innerHTML = html;
+        if (title){ document.getElementById('title-el').textContent = title; document.title = `${title} | Wenkang Zhang`; }
+        if (date){ document.getElementById('meta-el').textContent = new Date(date).toLocaleDateString(); }
+        if (window.MathJax) MathJax.typeset();
+      }).catch(err=>{
+        document.getElementById('body-el').innerHTML = '<p>Post not found.</p>';
+      });
+    }
+  </script>
+</body>
+</html>
