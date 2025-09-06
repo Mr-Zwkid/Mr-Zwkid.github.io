@@ -6,10 +6,10 @@
   date: 2025-08-15
   summary: Notes on a photo-realistic and controllable data generation pipeline using Gaussian Splatting for policy training.
   tags: [Robotics, GS, Sim2Real]
-  link: post.html?slug=gs-sim2real
+  link: posts/gs-sim2real.html
 
 - title: 3D Gaussian Splatting in Practice
   date: 2025-07-02
   summary: Practical tips and pitfalls from implementing dynamic and compact 3DGS variants.
   tags: [3DGS, Tips]
-  link: post.html?slug=hello-3dgs
+  link: posts/hello-3dgs.html

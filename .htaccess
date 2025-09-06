@@ -1,0 +1,11 @@
+# Allow serving markdown files as text/plain
+AddType text/plain .md
+
+# Alternative: serve as text/markdown
+# AddType text/markdown .md
+
+# Ensure markdown files are accessible
+<Files "*.md">
+    ForceType text/plain
+    Header set Content-Type "text/plain; charset=utf-8"
+</Files>

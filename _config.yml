@@ -1,0 +1,25 @@
+# GitHub Pages configuration
+# Allow direct access to markdown files
+include:
+  - posts/*.md
+
+# Ensure markdown files are served
+defaults:
+  - scope:
+      path: "posts"
+      type: "posts"
+    values:
+      permalink: /:title/
+
+# Plugins
+plugins:
+  - jekyll-default-layout
+
+# Markdown processor
+markdown: kramdown
+
+# File extensions to process
+markdown_ext: "markdown,mkdown,mkdn,mkd,md"
+
+# Allow serving of markdown files directly
+serve_static_files: true

@@ -1,0 +1,42 @@
+name: Auto-generate HTML from Markdown
+
+on:
+  push:
+    branches: [ main ]
+    paths: 
+      - 'posts/*.md'
+      - '.github/workflows/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'posts/*.md'
+
+jobs:
+  generate-html:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+    
+    - name: Install dependencies
+      run: |
+        npm install -g marked js-yaml
+    
+    - name: Generate HTML files
+      run: |
+        node .github/scripts/generate-html.js
+    
+    - name: Commit generated HTML files
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add posts/*.html
+        git diff --staged --quiet || git commit -m "Auto-generate HTML files from Markdown"
+        git push
