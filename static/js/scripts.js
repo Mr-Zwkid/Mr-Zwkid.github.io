@@ -2,7 +2,7 @@
 
 const content_dir = 'contents/'
 const config_file = 'config.yml'
-const section_names = ['home', 'publications', 'awards']
+const section_names = ['home', 'publications', 'awards', 'blog']
 
 
 window.addEventListener('DOMContentLoaded', event => {
@@ -63,6 +63,10 @@ window.addEventListener('DOMContentLoaded', event => {
                 if (name === 'publications') {
                     initPublicationFilters();
                 }
+                // Load blog list after blog markdown is injected
+                if (name === 'blog') {
+                    loadBlogList();
+                }
             })
             .catch(error => console.log(error));
     })
@@ -94,4 +98,46 @@ function initPublicationFilters() {
             });
         });
     });
+}
+
+// Blog list rendering from YAML (contents/blog.yml)
+function loadBlogList() {
+    const blogListEl = document.getElementById('blog-list');
+    if (!blogListEl) return;
+    fetch(content_dir + 'blog.yml')
+        .then(r => r.text())
+        .then(text => {
+            let posts = [];
+            try {
+                const yml = jsyaml.load(text) || [];
+                posts = Array.isArray(yml) ? yml : (yml.posts || []);
+            } catch (e) {
+                console.log('Failed to parse blog.yml', e);
+            }
+            // sort by date desc if present
+            posts.sort((a, b) => (new Date(b.date || 0)) - (new Date(a.date || 0)));
+            blogListEl.innerHTML = posts.map(renderPostCard).join('') || '<p>No posts yet.</p>';
+        })
+        .catch(() => blogListEl.innerHTML = '<p>No posts yet.</p>');
+}
+
+function renderPostCard(p) {
+    const title = escapeHtml(p.title || 'Untitled');
+    const date = p.date ? new Date(p.date).toLocaleDateString() : '';
+    const desc = escapeHtml(p.summary || p.excerpt || '');
+    const tags = (p.tags || []).map(t => `<span class="tag">${escapeHtml(t)}</span>`).join('');
+    const link = p.link || p.url || '#';
+    return `
+    <article class="blog-card">
+        <div class="blog-card-body">
+            <h3 class="blog-title"><a href="${link}" target="_blank" rel="noopener">${title}</a></h3>
+            <div class="blog-meta">${date} ${tags ? '&middot; ' + tags : ''}</div>
+            ${desc ? `<p class="blog-desc">${desc}</p>` : ''}
+        </div>
+    </article>`;
+}
+
+function escapeHtml(str) {
+    const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
+    return String(str).replace(/[&<>"']/g, s => map[s]);
 }
