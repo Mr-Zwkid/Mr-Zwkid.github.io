@@ -69,7 +69,9 @@
     }
     
     const slug = getParam('slug');
+    console.log('Slug parameter:', slug);
     const mdUrl = slug ? `posts/${slug}.md` : '';
+    console.log('Markdown URL:', mdUrl);
 
     // Load config to fill footer
     fetch('contents/config.yml').then(r=>r.text()).then(text=>{
@@ -80,12 +82,15 @@
     if (!slug){
       document.getElementById('body-el').innerHTML = '<p>Missing slug parameter.</p>';
     } else {
+      console.log('Fetching:', mdUrl);
       fetch(mdUrl).then(response => {
+        console.log('Response status:', response.status, 'OK:', response.ok);
         if (!response.ok) {
           throw new Error('Post not found.');
         }
         return response.text();
       }).then(text=>{
+        console.log('Received text, length:', text.length);
         let title = '', date = '';
         // normalize line endings to handle CRLF
         const norm = text.replace(/\r\n/g,'\n');
@@ -95,15 +100,18 @@
           if (end !== -1){
             const fm = norm.slice(3, end).trim();
             content = norm.slice(end+4);
-            try{ const y = jsyaml.load(fm) || {}; title = y.title||''; date = y.date||''; }catch{}
+            try{ const y = jsyaml.load(fm) || {}; title = y.title||''; date = y.date||''; }catch(e){ console.error('YAML error:', e); }
           }
         }
+        console.log('Title:', title, 'Date:', date);
         const html = marked.parse(content);
+        console.log('Generated HTML length:', html.length);
         document.getElementById('body-el').innerHTML = html;
         if (title){ document.getElementById('title-el').textContent = title; document.title = `${title} | Wenkang Zhang`; }
         if (date){ document.getElementById('meta-el').textContent = new Date(date).toLocaleDateString(); }
         if (window.MathJax) MathJax.typeset();
       }).catch(err=>{
+        console.error('Error loading post:', err);
         document.getElementById('body-el').innerHTML = `<p>Error loading post: ${err.message}</p>`;
       });
     }
