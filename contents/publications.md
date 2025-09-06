@@ -7,7 +7,7 @@
     <div class="pub-authors">Zhengxue Cheng, Yiqian Zhang, <span class="author-me">Wenkang Zhang</span>, Haoyu Li, Keyu Wang, Li Song, Hengdi Zhang</div>
     <div class="pub-venue">In Submission, 2025</div>
     <div class="pub-links">
-      <a href="https://readerek.github.io/Objtac.github.io/">dataset</a> |
+      <a href="https://readerek.github.io/Objtac.github.io/">Project</a>
       <a href="https://arxiv.org/abs/2508.08706">arXiv</a>
     </div>
   </div>
