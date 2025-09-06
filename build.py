@@ -1,12 +1,32 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+"""
+静态网站构建脚本
+将Markdown文件转换为HTML文件，支持Front Matter
+作者：Wenkang Zhang
+"""
+
 import os
 import re
 import yaml
+import logging
 from pathlib import Path
+from datetime import datetime
+
+# 配置日志
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
 def parse_front_matter(content):
-    """解析front matter"""
+    """
+    解析YAML Front Matter
+    
+    Args:
+        content (str): 文件内容
+        
+    Returns:
+        tuple: (front_matter_dict, markdown_content)
+    """
     if not content.startswith('---'):
         return {}, content
     
@@ -16,61 +36,128 @@ def parse_front_matter(content):
             front_matter = yaml.safe_load(parts[1]) or {}
             markdown_content = parts[2].strip()
             return front_matter, markdown_content
-    except:
-        pass
+    except yaml.YAMLError as e:
+        logger.warning(f"YAML解析错误: {e}")
+    except Exception as e:
+        logger.error(f"Front matter解析失败: {e}")
     
     return {}, content
 
-def markdown_to_html(markdown):
-    """简单的Markdown转HTML转换"""
-    html = markdown
+def markdown_to_html(markdown_text):
+    """
+    简单的Markdown转HTML转换器
+    支持标题、列表、段落、粗体、斜体等基本格式
     
-    # 标题
+    Args:
+        markdown_text (str): Markdown文本
+        
+    Returns:
+        str: HTML内容
+    """
+    html = markdown_text
+    
+    # 标题转换
     html = re.sub(r'^# (.*)$', r'<h1>\1</h1>', html, flags=re.MULTILINE)
     html = re.sub(r'^## (.*)$', r'<h2>\1</h2>', html, flags=re.MULTILINE)
     html = re.sub(r'^### (.*)$', r'<h3>\1</h3>', html, flags=re.MULTILINE)
+    html = re.sub(r'^#### (.*)$', r'<h4>\1</h4>', html, flags=re.MULTILINE)
     
-    # 列表项
-    html = re.sub(r'^- (.*)$', r'<li>\1</li>', html, flags=re.MULTILINE)
+    # 粗体和斜体
+    html = re.sub(r'\*\*(.*?)\*\*', r'<strong>\1</strong>', html)
+    html = re.sub(r'\*(.*?)\*', r'<em>\1</em>', html)
     
-    # 包装连续的<li>为<ul>
-    html = re.sub(r'(<li>.*?</li>(\s*<li>.*?</li>)*)', r'<ul>\1</ul>', html, flags=re.DOTALL)
+    # 链接
+    html = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r'<a href="\2">\1</a>', html)
     
-    # 段落 - 将非标签行转为段落
+    # 图片
+    html = re.sub(r'!\[([^\]]*)\]\(([^)]+)\)', r'<img src="\2" alt="\1" />', html)
+    
+    # 代码块（简单处理）
+    html = re.sub(r'`([^`]+)`', r'<code>\1</code>', html)
+    
+    # 无序列表
+    html = re.sub(r'^[-*] (.*)$', r'<li>\1</li>', html, flags=re.MULTILINE)
+    
+    # 处理段落和列表
     lines = html.split('\n')
     result_lines = []
     current_paragraph = []
+    in_list = False
     
     for line in lines:
         line = line.strip()
-        if not line:
+        
+        if not line:  # 空行
             if current_paragraph:
                 result_lines.append('<p>' + ' '.join(current_paragraph) + '</p>')
                 current_paragraph = []
-        elif line.startswith('<'):
+            if in_list:
+                result_lines.append('</ul>')
+                in_list = False
+        elif line.startswith('<li>'):  # 列表项
             if current_paragraph:
                 result_lines.append('<p>' + ' '.join(current_paragraph) + '</p>')
                 current_paragraph = []
+            if not in_list:
+                result_lines.append('<ul>')
+                in_list = True
             result_lines.append(line)
-        else:
+        elif line.startswith('<h') or line.startswith('<div') or line.startswith('<img'):  # HTML标签
+            if current_paragraph:
+                result_lines.append('<p>' + ' '.join(current_paragraph) + '</p>')
+                current_paragraph = []
+            if in_list:
+                result_lines.append('</ul>')
+                in_list = False
+            result_lines.append(line)
+        else:  # 普通文本
+            if in_list:
+                result_lines.append('</ul>')
+                in_list = False
             current_paragraph.append(line)
     
+    # 处理剩余内容
     if current_paragraph:
         result_lines.append('<p>' + ' '.join(current_paragraph) + '</p>')
+    if in_list:
+        result_lines.append('</ul>')
     
     return '\n'.join(result_lines)
 
 def html_template(title, date, content, description=''):
-    """HTML模板"""
+    """
+    生成HTML页面模板
+    
+    Args:
+        title (str): 页面标题
+        date (str): 发布日期
+        content (str): 页面内容
+        description (str): 页面描述
+        
+    Returns:
+        str: 完整的HTML页面
+    """
+    # 格式化日期
     date_str = ''
     if date:
         try:
-            from datetime import datetime
             if isinstance(date, str):
-                date_obj = datetime.strptime(date, '%Y-%m-%d')
-                date_str = f'<div class="post-meta">{date_obj.strftime("%Y年%m月%d日")}</div>'
-        except:
-            date_str = f'<div class="post-meta">{date}</div>'
+                # 尝试解析不同的日期格式
+                for fmt in ['%Y-%m-%d', '%Y/%m/%d', '%d/%m/%Y']:
+                    try:
+                        date_obj = datetime.strptime(date, fmt)
+                        date_str = f'<div class="post-meta">{date_obj.strftime("%Y年%m月%d日")}</div>'
+                        break
+                    except ValueError:
+                        continue
+                else:
+                    # 如果无法解析，直接使用原始字符串
+                    date_str = f'<div class="post-meta">{date}</div>'
+            else:
+                date_str = f'<div class="post-meta">{date}</div>'
+        except Exception as e:
+            logger.warning(f"日期格式化失败: {e}")
+            date_str = f'<div class="post-meta">{date}</div>' if date else ''
     
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -145,42 +232,72 @@ def html_template(title, date, content, description=''):
 </html>"""
 
 def main():
-    """主函数"""
+    """
+    主函数 - 批量处理Markdown文件并生成HTML
+    """
     posts_dir = Path('posts')
     
     if not posts_dir.exists():
-        print("posts目录不存在")
-        return
+        logger.error("posts目录不存在")
+        return False
     
-    # 处理所有markdown文件
-    for md_file in posts_dir.glob('*.md'):
-        print(f"处理文件: {md_file.name}")
-        
-        # 读取markdown文件
-        with open(md_file, 'r', encoding='utf-8') as f:
-            content = f.read()
-        
-        # 解析front matter
-        front_matter, markdown_content = parse_front_matter(content)
-        
-        # 转换为HTML
-        html_content = markdown_to_html(markdown_content)
-        
-        # 生成最终HTML
-        title = front_matter.get('title', 'Untitled')
-        date = front_matter.get('date', '')
-        description = front_matter.get('summary', front_matter.get('description', ''))
-        
-        final_html = html_template(title, date, html_content, description)
-        
-        # 写入HTML文件
-        html_file = md_file.with_suffix('.html')
-        with open(html_file, 'w', encoding='utf-8') as f:
-            f.write(final_html)
-        
-        print(f"生成文件: {html_file.name}")
+    # 获取所有markdown文件
+    md_files = list(posts_dir.glob('*.md'))
+    if not md_files:
+        logger.warning("posts目录中没有找到Markdown文件")
+        return True
     
-    print("HTML生成完成！")
+    logger.info(f"找到 {len(md_files)} 个Markdown文件")
+    
+    success_count = 0
+    error_count = 0
+    
+    # 处理每个markdown文件
+    for md_file in md_files:
+        try:
+            logger.info(f"处理文件: {md_file.name}")
+            
+            # 读取markdown文件
+            with open(md_file, 'r', encoding='utf-8') as f:
+                content = f.read()
+            
+            # 解析front matter
+            front_matter, markdown_content = parse_front_matter(content)
+            
+            # 转换为HTML
+            html_content = markdown_to_html(markdown_content)
+            
+            # 获取元数据
+            title = front_matter.get('title', md_file.stem.replace('-', ' ').title())
+            date = front_matter.get('date', '')
+            description = front_matter.get('summary', front_matter.get('description', ''))
+            
+            # 生成最终HTML
+            final_html = html_template(title, date, html_content, description)
+            
+            # 写入HTML文件
+            html_file = md_file.with_suffix('.html')
+            with open(html_file, 'w', encoding='utf-8') as f:
+                f.write(final_html)
+            
+            logger.info(f"成功生成: {html_file.name}")
+            success_count += 1
+            
+        except Exception as e:
+            logger.error(f"处理 {md_file.name} 时出错: {e}")
+            error_count += 1
+    
+    # 输出总结
+    logger.info(f"处理完成! 成功: {success_count}, 失败: {error_count}")
+    return error_count == 0
 
 if __name__ == '__main__':
-    main()
+    try:
+        success = main()
+        exit(0 if success else 1)
+    except KeyboardInterrupt:
+        logger.info("用户中断了程序")
+        exit(1)
+    except Exception as e:
+        logger.error(f"程序执行出错: {e}")
+        exit(1)

@@ -5,38 +5,41 @@ on:
     branches: [ main ]
     paths: 
       - 'posts/*.md'
+      - 'build.py'
       - '.github/workflows/**'
   pull_request:
     branches: [ main ]
     paths:
       - 'posts/*.md'
+      - 'build.py'
 
 jobs:
   generate-html:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       with:
         fetch-depth: 0
     
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
+    - name: Set up Python
+      uses: actions/setup-python@v4
       with:
-        node-version: '18'
+        python-version: '3.x'
     
-    - name: Install dependencies
+    - name: Install Python dependencies
       run: |
-        npm install -g marked js-yaml
+        python -m pip install --upgrade pip
+        pip install PyYAML
     
     - name: Generate HTML files
       run: |
-        node .github/scripts/generate-html.js
+        python build.py
     
     - name: Commit generated HTML files
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add posts/*.html
-        git diff --staged --quiet || git commit -m "Auto-generate HTML files from Markdown"
+        git diff --staged --quiet || git commit -m "Auto-generate HTML files from Markdown [skip ci]"
         git push
