@@ -1,8 +1,7 @@
 ---
-# Optional front-matter
-# title: 3D Gaussian Splatting in Practice
-# date: 2025-07-02
-# tags: [3DGS, Tips]
+title: 3D Gaussian Splatting in Practice
+date: 2025-07-02
+tags: [3DGS, Tips]
 ---
 
 # 3D Gaussian Splatting in Practice

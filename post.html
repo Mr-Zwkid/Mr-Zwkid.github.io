@@ -63,6 +63,11 @@
   </footer>
 
   <script>
+    function getParam(name) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
+    }
+    
     const slug = getParam('slug');
     const mdUrl = slug ? `posts/${slug}.md` : '';
 
