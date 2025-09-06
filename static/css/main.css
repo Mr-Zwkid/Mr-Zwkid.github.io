@@ -559,3 +559,73 @@ section .container > .main-body{
     }
 }
 
+/* Social Media Icons Styles */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+    margin: 2.5rem 0;
+    flex-wrap: wrap;
+}
+
+.social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: #f8f9fa;
+    color: #6c757d;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 1.3rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: all 0.25s ease;
+    border: 1px solid #e9ecef;
+}
+
+.social-icon:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+}
+
+/* Individual icon colors on hover */
+.social-icon:nth-child(1):hover { /* Email */
+    background: #ea4335;
+    color: white;
+    border-color: #ea4335;
+}
+
+.social-icon:nth-child(2):hover { /* Google Scholar */
+    background: #4285f4;
+    color: white;
+    border-color: #4285f4;
+}
+
+.social-icon:nth-child(3):hover { /* GitHub */
+    background: #24292e;
+    color: white;
+    border-color: #24292e;
+}
+
+.social-icon:nth-child(4):hover { /* LinkedIn */
+    background: #0a66c2;
+    color: white;
+    border-color: #0a66c2;
+}
+
+/* Responsive adjustments for social icons */
+@media (max-width: 768px) {
+    .social-icons {
+        gap: 1rem;
+        margin: 2rem 0;
+    }
+    
+    .social-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 1.1rem;
+    }
+}
+
