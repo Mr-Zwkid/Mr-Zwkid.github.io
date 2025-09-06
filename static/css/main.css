@@ -629,3 +629,10 @@ section .container > .main-body{
     }
 }
 
+/* Align social icons directly under the home subtitle and left-align them */
+section#home .social-icons {
+    justify-content: flex-start; /* 左对齐 */
+    margin: 0.25rem 0 1.5rem 0;  /* 更靠近副标题 */
+    padding-left: 0;             /* 确保无额外缩进 */
+}
+
