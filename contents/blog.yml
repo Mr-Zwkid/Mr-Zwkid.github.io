@@ -2,14 +2,8 @@
 # You can also keep using contents/blog.md for long intro; this YAML drives the list below it.
 # Example fields: title, date (YYYY-MM-DD), summary, tags, link
 
-- title: Building a controllable GS-based sim2real pipeline for robotics
-  date: 2025-08-15
-  summary: Notes on a photo-realistic and controllable data generation pipeline using Gaussian Splatting for policy training.
+- title: Towards GS-based Simulation
+  date: 
+  summary: summary of the internship project in Paxini
   tags: [Robotics, GS, Sim2Real]
   link: posts/gs-sim2real.html
-
-- title: 3D Gaussian Splatting in Practice
-  date: 2025-07-02
-  summary: Practical tips and pitfalls from implementing dynamic and compact 3DGS variants.
-  tags: [3DGS, Tips]
-  link: posts/hello-3dgs.html

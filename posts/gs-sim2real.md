@@ -1,13 +1,7 @@
 ---
-title: Building a controllable GS-based sim2real pipeline for robotics
-date: 2025-08-15
+title: Towards GS-based Simulation
+date: 
 tags: [Robotics, GS, Sim2Real]
 ---
 
-This is a placeholder for the sim2real pipeline article. Replace this content with your detailed write-up.
-
-- Motivation
-- Pipeline overview
-- Datasets & assets
-- Results
-
+TO BE REALIZED

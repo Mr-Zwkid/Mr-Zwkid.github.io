@@ -17,19 +17,11 @@
   <img src="../static/assets/img/teaser_dfcgs.png" alt="D-FCGS" class="pub-image" />
   <div class="pub-content">
     <div class="pub-title">D-FCGS: Feedforward Compression of Dynamic Gaussian Splatting for Free-Viewpoint Videos</div>
-    <div class="pub-authors"><span class="author-me">Wenkang Zhang</span>, Yan Zhao, Qiang Wang, Li Song, Zhengxue Cheng</div>
-    <div class="pub-venue">In Submission, 2025</div>
+    <div class="pub-authors"><span class="author-me">Wenkang Zhang</span>, Yan Zhao, Qiang Wang, Zhixin Xu, Li Song, Zhengxue Cheng</div>
+    <div class="pub-venue">AAAI-26</div>
     <div class="pub-links">
       <a href="https://arxiv.org/abs/2507.05859">arXiv</a>
+      <a href="https://readerek.github.io/Objtac.github.io/">Code</a>
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
