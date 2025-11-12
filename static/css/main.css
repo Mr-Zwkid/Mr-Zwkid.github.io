@@ -201,6 +201,7 @@ section .container > .main-body{
     margin-bottom: 0.75rem;
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2; /* standard property for compatibility */
     -webkit-box-orient: vertical;
 }
 
@@ -609,11 +610,7 @@ section .container > .main-body{
     border-color: #24292e;
 }
 
-.social-icon:nth-child(4):hover { /* LinkedIn */
-    background: #0a66c2;
-    color: white;
-    border-color: #0a66c2;
-}
+/* Removed LinkedIn 4th icon hover style since no 4th icon is present */
 
 /* Responsive adjustments for social icons */
 @media (max-width: 768px) {

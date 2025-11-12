@@ -21,7 +21,7 @@
     <div class="pub-venue">AAAI-26</div>
     <div class="pub-links">
       <a href="https://arxiv.org/abs/2507.05859">arXiv</a>
-      <a href="https://readerek.github.io/Objtac.github.io/">Code</a>
+      <a href="https://github.com/Mr-Zwkid/D-FCGS">Code</a>
     </div>
   </div>
 </div>
