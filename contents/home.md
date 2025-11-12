@@ -15,7 +15,7 @@ Hello, I am Wenkang Zhang, a senior undergraduate from [Shanghai Jiao Tong Unive
 
 <!-- Previously I also participated in several school-level research projects, including robotic grasping detection (advised by [Xinwu Liang](https://www.aero.sjtu.edu.cn/szdw/szml/51)) and submersible development (advised by [Jianping He](https://automation.sjtu.edu.cn/JPHE)).  -->
 
-Next fall, I'll start my PhD journey under the joint program of [SQZ](https://www.sqz.ac.cn/en) and [SAI](https://soai.sjtu.edu.cn/), supervised by [Yang Gao](https://yang-gao.weebly.com/). The general topic is embodied intelligence.
+Next fall, I'll start my PhD journey under the joint program of [SQZ](https://www.sqz.ac.cn/en) and [SAI](https://soai.sjtu.edu.cn/), supervised by [Yang Gao](https://yang-gao.weebly.com/). The general topic is Embodied AI.
 
 #### Education
 B.E., Information Engineering, Shanghai Jiao Tong University, 2022-2026 (expected).
