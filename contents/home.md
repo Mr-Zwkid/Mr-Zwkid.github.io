@@ -11,7 +11,9 @@
     </a>
 </div>
 
-Hello, I am Wenkang Zhang, a senior undergraduate from [Shanghai Jiao Tong University](https://en.sjtu.edu.cn/). I've carried out research on 3DGS and its extensions (dynamic/compact) in [SJTU Media Lab](https://medialab.sjtu.edu.cn/), supervised by [Zhengxue Cheng](https://medialab.sjtu.edu.cn/author/zhengxue-cheng/) and [Li Song](https://medialab.sjtu.edu.cn/author/li-song/). Previously I also participated in several school-level research projects, including robotic grasping detection (advised by [Xinwu Liang](https://www.aero.sjtu.edu.cn/szdw/szml/51)) and submersible development (advised by [Jianping He](https://automation.sjtu.edu.cn/JPHE)). I've also worked as an intern on Real2Sim2Real using GS in [Paxini Tech](https://paxini.com/), Shanghai. 
+Hello, I am Wenkang Zhang, a senior undergraduate from [Shanghai Jiao Tong University](https://en.sjtu.edu.cn/). I've carried out research on 3DGS and its extensions (dynamic/compact) in [SJTU Media Lab](https://medialab.sjtu.edu.cn/), supervised by [Zhengxue Cheng](https://medialab.sjtu.edu.cn/author/zhengxue-cheng/) and [Li Song](https://medialab.sjtu.edu.cn/author/li-song/). I've also worked as an intern on Real2Sim2Real using GS in [Paxini Tech](https://paxini.com/), Shanghai. 
+
+<!-- Previously I also participated in several school-level research projects, including robotic grasping detection (advised by [Xinwu Liang](https://www.aero.sjtu.edu.cn/szdw/szml/51)) and submersible development (advised by [Jianping He](https://automation.sjtu.edu.cn/JPHE)).  -->
 
 Next fall, I'll start my PhD journey under the joint program of [SQZ](https://www.sqz.ac.cn/en) and [SAI](https://soai.sjtu.edu.cn/), supervised by [Yang Gao](https://yang-gao.weebly.com/). The general topic is embodied intelligence.
 
