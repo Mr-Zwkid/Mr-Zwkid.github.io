@@ -129,13 +129,18 @@ section .container > .main-body{
 }
 
 #avatar img {
-    height: max(130px,min(200px,calc(100vw/6)));
+    /* Enlarged avatar: larger on desktop, constrained on small screens */
+    height: max(160px, min(300px, calc(100vw/5)));
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
 }
 
 @media screen and (max-width: 991px) {
     #avatar {
         margin: 0;
+    }
+    #avatar img {
+        /* Keep avatar reasonable on tablets/phones */
+        height: max(120px, min(180px, calc(100vw/4)));
     }
 }
 
