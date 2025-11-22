@@ -129,9 +129,10 @@ section .container > .main-body{
 }
 
 #avatar img {
-    /* Enlarged avatar: larger on desktop, constrained on small screens */
-    height: max(160px, min(300px, calc(100vw/5)));
+    /* Avatar size: medium on desktop, smaller on small screens */
+    height: max(120px, min(220px, calc(100vw/6)));
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    margin-bottom: 2rem; /* Increase spacing between avatar and text below */
 }
 
 @media screen and (max-width: 991px) {
@@ -164,46 +165,65 @@ section .container > .main-body{
 }
 
 .publication-item {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 2.5rem;
-    padding: 2rem;
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-    border: 1px solid #e2e8f0;
-    transition: all 0.3s ease;
+    display: grid;
+    grid-template-columns: 260px 1fr; /* 固定图片列 + 自适应内容列 */
+    column-gap: 2rem; /* 图片与文字间距 */
+    align-items: start; /* 顶部对齐 */
+    justify-content: center; /* 整体居中 */
+    margin-bottom: 1.6rem; /* 条目间距保持 */
+    padding: 1.25rem 1rem; /* 紧凑内边距 */
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+    transition: none;
 }
 
 .publication-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-    border-color: var(--h-title-color);
+    /* Remove all hover effects for embedded style */
+    transform: none;
+    box-shadow: none;
+    border-color: transparent;
 }
 
 .pub-image {
-    width: 280px;
-    height: 180px;
-    object-fit: contain; /* 确保图片完整显示 */
+    width: 100%; /* 在网格中占满自身列 */
+    max-width: 260px; /* 与列宽一致 */
+    height: auto; /* 保持比例 */
+    object-fit: contain;
     border-radius: 8px;
-    margin-right: 2rem;
     flex-shrink: 0;
-    background: #f8fafc;
-    padding: 0.5rem;
-    border: 1px solid #e2e8f0;
+    background: transparent;
+    padding: 0;
+    border: none;
 }
 
 .pub-content {
-    flex: 1;
     min-width: 0;
+    text-align: left; /* 确保正文在内容列内左对齐，TL;DR 会沿此起点对齐 */
+}
+
+/* TL;DR concise summary block */
+.pub-tldr {
+    display: inline-block; /* 不占满整行，背景随文字宽度收缩 */
+    margin-top: 0.35rem;
+    margin-bottom: 0.6rem;
+    color: #444;
+    background: rgba(41,55,240,0.04); /* subtle tint */
+    padding: 0.35rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    line-height: 1.3;
+    max-width: 100%;
+    word-break: break-word; /* 防止长词撑开背景 */
 }
 
 .pub-title {
-    font-size: 1.25rem;
+    font-size: 1.18rem; /* slightly smaller */
     font-weight: 600;
     color: var(--h-title-color);
-    line-height: 1.4;
-    margin-bottom: 0.75rem;
+    line-height: 1.2; /* tighter lines */
+    margin-bottom: 0.35rem; /* reduce gap to authors */
     display: -webkit-box;
     -webkit-line-clamp: 2;
     line-clamp: 2; /* standard property for compatibility */
@@ -211,52 +231,49 @@ section .container > .main-body{
 }
 
 .pub-authors {
-    font-size: 1rem;
+    font-size: 0.98rem;
     color: #4a5568;
-    line-height: 1.5;
-    margin-bottom: 0.5rem;
+    line-height: 1.25;
+    margin-bottom: 0.35rem;
 }
 
 .author-me {
-    font-weight: 600;
-    color: var(--h-title-color);
-    text-decoration: underline;
+    font-weight: 700; /* stronger weight */
+    color: #000000;   /* black */
+    text-decoration: none; /* remove underline */
 }
 
 .pub-venue {
     font-size: 0.95rem;
     color: #718096;
-    font-style: italic;
+    font-style: normal; /* remove italic */
     margin-bottom: 1rem;
 }
 
 .pub-links {
     display: flex;
-    gap: 1rem;
+    gap: 1rem; /* tighten gap */
     flex-wrap: wrap;
 }
 
 .pub-links a {
     color: var(--h-title-color);
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 500;
-    padding: 0.4rem 0.8rem;
-    border-radius: 6px;
-    border: 1px solid var(--h-title-color);
-    transition: all 0.2s ease;
+    text-decoration: none; /* remove underline for minimal style */
+    font-size: 0.95rem;
+    font-weight: 500; /* slightly emphasized */
+    padding: 0 0.15rem; /* minimal horizontal padding */
+    border: none;
+    transition: color 0.15s ease;
 }
 
 .pub-links a:hover {
-    background: var(--h-title-color);
-    color: white;
-    transform: translateY(-1px);
+    color: #1f2fc7; /* subtle darker blue on hover */
 }
 
 /* 移动端响应式 */
 @media (max-width: 768px) {
     .publication-item {
-        flex-direction: column;
+        display: block; /* 移动端改为块级顺序堆叠 */
         padding: 1.5rem;
         text-align: center;
     }
@@ -488,62 +505,7 @@ section .container > .main-body{
     border-bottom: none;
 }
 
-.pub-image {
-    width: 160px;
-    height: 120px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-right: 20px;
-    flex-shrink: 0;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.pub-content {
-    flex: 1;
-    min-width: 0;
-}
-
-.pub-title {
-    font-size: 1.3rem; /* 与其他模块主文一致 */
-    font-weight: 600;
-    color: var(--h-title-color);
-    line-height: 1.3;
-    margin-bottom: 0.3rem;
-}
-
-.pub-authors {
-    font-size: 1.3rem; /* 统一字号 */
-    color: #555;
-    line-height: 1.3;
-    margin-bottom: 0.18rem;
-}
-
-.pub-venue {
-    font-size: 1.3rem; /* 统一字号 */
-    color: #777;
-    font-style: italic;
-    margin-bottom: 0.2rem;
-}
-
-.pub-links {
-    font-size: 1.3rem; /* 统一字号 */
-}
-
-.pub-links a {
-    color: var(--h-title-color);
-    text-decoration: none;
-    margin-right: 0.5rem;
-    font-size: inherit; /* 与父级统一 */
-}
-
-.pub-links a:hover {
-    text-decoration: underline;
-}
-
-.author-me {
-    font-weight: 600;
-    color: var(--h-title-color);
-}
+/* Consolidated publication styles above; duplicates removed. */
 
 /* Jon Barron style mobile optimization */
 @media (max-width: 768px) {
@@ -556,8 +518,9 @@ section .container > .main-body{
     .pub-image {
         margin-right: 0;
         margin-bottom: 1rem;
-        width: 140px;
-        height: 105px;
+        width: 100%;
+        max-width: 400px;
+        height: auto;
     }
     
     .pub-content {

@@ -11,7 +11,7 @@
     </a>
 </div>
 
-Hello, I am Wenkang Zhang, a senior undergraduate from [Shanghai Jiao Tong University](https://en.sjtu.edu.cn/). I've carried out research on 3DGS and its extensions (dynamic/compact) in [SJTU Media Lab](https://medialab.sjtu.edu.cn/), supervised by [Zhengxue Cheng](https://medialab.sjtu.edu.cn/author/zhengxue-cheng/) and [Li Song](https://medialab.sjtu.edu.cn/author/li-song/). I've also worked as an intern on Real2Sim2Real using GS in [Paxini Tech](https://paxini.com/), Shanghai. 
+Hello, I am Wenkang Zhang, a senior undergraduate from [Shanghai Jiao Tong University](https://en.sjtu.edu.cn/). I've carried out research on 3DGS and its extensions (dynamic/compact) in [SJTU Media Lab](https://medialab.sjtu.edu.cn/), supervised by [Zhengxue Cheng](https://medialab.sjtu.edu.cn/author/zhengxue-cheng/) and [Li Song](https://medialab.sjtu.edu.cn/author/li-song/). I've also worked as an intern in [Paxini Tech](https://paxini.com/) (Shanghai), where I focus on GS-involved Real2Sim2Real for robotic data generation. 
 
 <!-- Previously I also participated in several school-level research projects, including robotic grasping detection (advised by [Xinwu Liang](https://www.aero.sjtu.edu.cn/szdw/szml/51)) and submersible development (advised by [Jianping He](https://automation.sjtu.edu.cn/JPHE)).  -->
 
@@ -25,4 +25,9 @@ Embodied AI; 3D Vision
 
 #### News
 - `[25.11]` D-FCGS is accepted by AAAI-26. See you in Singapore! 
-<!-- [CLICK HERE TO SEE MORE!](https://notes.sjtu.edu.cn/s/KXi6h8u-b) -->
+
+
+<!-- cd C:\Users\86151\Desktop\Mr-Zwkid.github.io
+python -m http.server 8000 -->
+
+<!-- 打开 http://localhost:8000/ 查看 -->
