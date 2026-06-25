@@ -1,144 +1,154 @@
-# Wenkang Zhang's Personal Homepage
+# 个人主页使用说明
 
-这是Wenkang Zhang的个人学术主页项目，基于Bootstrap构建，支持Markdown文件作为内容输入。
+这是一个基于 GitHub Pages 的轻量静态个人主页。
 
-## ✨ 特性
+目前站点已经不依赖额外构建步骤：
 
-- 📝 支持Markdown文件编写博客文章
-- 🎨 基于Bootstrap的现代化设计
-- 📱 响应式布局，支持各种设备
-- 🔢 内置MathJax，完美支持LaTeX数学公式
-- 🚀 自动化构建和部署脚本
-- 🎯 SEO友好的静态网站
+- `index.html` 会在浏览器里直接读取 `contents/config.yml` 和 `contents/*.md`
+- `blog.html` 会直接读取 `contents/blog.yml`
+- `post.html` 会直接读取 `posts/<slug>.md`
 
-## 📁 项目结构
+也就是说，平时改主页内容、改头像、改博客，通常都不需要先运行 `build.py` 之类的脚本，启动本地静态服务器后刷新页面即可。
 
-```
+## 项目结构
+
+```text
 .
-├── _config.yml          # GitHub Pages配置文件
-├── index.html          # 主页面
-├── blog.html           # 博客列表页面
-├── post.html           # 文章页面模板
-├── build.py            # Python构建脚本
-├── deploy.bat          # 自动部署脚本
-├── LICENSE             # 开源协议
-├── README.md           # 项目说明
-├── contents/           # 页面内容配置
-│   ├── config.yml      # 网站配置
-│   ├── home.md         # 首页内容
-│   ├── blog.md         # 博客页面内容
-│   ├── awards.md       # 奖项信息
-│   └── publications.md # 发表论文
-├── posts/              # 博客文章（Markdown格式）
-│   ├── *.md           # Markdown源文件
-│   └── *.html         # 自动生成的HTML文件
-└── static/             # 静态资源
-    ├── assets/         # 资源文件
-    │   ├── img/       # 图片资源
-    │   └── *.pdf      # PDF文件
-    ├── css/           # 样式文件
-    └── js/            # JavaScript文件
+|-- index.html                # 主页
+|-- blog.html                 # 博客列表页
+|-- post.html                 # 博客详情页模板
+|-- contents/
+|   |-- config.yml            # 网站标题、页脚等公共配置
+|   |-- home.md               # 首页介绍
+|   |-- publications.md       # 论文列表
+|   |-- awards.md             # 奖项列表
+|   `-- blog.yml              # 博客卡片数据
+|-- posts/
+|   `-- *.md                  # 博客正文
+`-- static/
+    |-- assets/
+    |   |-- CV_WenkangZhang.pdf
+    |   `-- img/
+    |       |-- avatar.png
+    |       `-- ...
+    |-- css/
+    `-- js/
 ```
 
-## 🚀 快速开始
+## 本地查看
 
-### 1. 克隆仓库
+### 用 Python 启动
 
-```bash
-git clone https://github.com/Mr-Zwkid/Mr-Zwkid.github.io.git
-cd Mr-Zwkid.github.io
+在仓库根目录运行：
+
+```powershell
+python -m http.server 8000
 ```
 
-### 2. 编辑内容
+然后打开：
 
-#### 修改网站配置
-编辑 `contents/config.yml` 文件来自定义网站标题、副标题等信息。
+```text
+http://localhost:8000/
+```
 
-#### 编辑页面内容
-- `contents/home.md` - 首页内容
-- `contents/publications.md` - 发表论文列表
-- `contents/awards.md` - 获奖情况
+### 用 VS Code Live Server
 
-#### 添加博客文章
-在 `posts/` 目录下创建新的Markdown文件，格式如下：
+如果你习惯用 VS Code，也可以直接对 `index.html` 启动 Live Server。
 
-```markdown
+## 日常修改
+
+### 1. 修改主页文案
+
+常改的文件是：
+
+- `contents/config.yml`
+- `contents/home.md`
+- `contents/publications.md`
+- `contents/awards.md`
+
+改完后刷新浏览器即可。
+
+### 2. 修改头像
+
+头像文件路径：
+
+```text
+static/assets/img/avatar.png
+```
+
+如果你已经替换了头像，但 `http://localhost:8000/` 里还是旧图，通常不是因为没构建，而是浏览器缓存了旧图片。
+
+可以这样排查：
+
+1. 先按 `Ctrl+F5` 强制刷新
+2. 或者开一个无痕窗口再访问一次
+3. 还不行的话，把图片文件改个名字，比如 `avatar-2026.png`，再同步修改 `index.html` 里的引用路径
+
+当前头像引用在：
+
+- `index.html`
+
+### 3. 新增博客
+
+先在 `posts/` 下新建一个 Markdown 文件，例如：
+
+```text
+posts/my-first-post.md
+```
+
+建议写成下面这种格式：
+
+```md
 ---
-title: "文章标题"
-date: "2025-01-01"
-summary: "文章摘要"
----
-
-文章内容...
-```
-
-### 3. 构建和部署
-
-#### 手动构建
-```bash
-python build.py
-```
-
-#### 自动部署
-双击运行 `deploy.bat` 文件，或在命令行中执行：
-```bash
-deploy.bat
-```
-
-## 📝 写作指南
-
-### Markdown语法支持
-
-- ✅ 标题 (H1-H4)
-- ✅ 段落和换行
-- ✅ **粗体** 和 *斜体*
-- ✅ [链接](URL)
-- ✅ 图片 ![alt](src)
-- ✅ `内联代码`
-- ✅ 无序列表
-- ✅ LaTeX数学公式
-
-### 数学公式示例
-
-内联公式：`$E = mc^2$`
-
-块级公式：
-```
-$$
-\frac{d}{dx}\int_{a}^{x} f(t)dt = f(x)
-$$
-```
-
-## 🔧 技术栈
-
-- **前端**: Bootstrap 5, HTML5, CSS3, JavaScript
-- **构建工具**: Python 3.x
-- **数学渲染**: MathJax 3
-- **托管平台**: GitHub Pages
-- **版本控制**: Git
-
-## 📄 许可证
-
-本项目采用 [MIT License](LICENSE) 开源协议。
-
-## 🙏 致谢
-
-本项目基于以下开源项目构建：
-- [Bootstrap](https://getbootstrap.com/)
-- [MathJax](https://www.mathjax.org/)
-- 原始模板来源：[github.com/SenLi1073](https://github.com/SenLi1073)
-
+title: 我的第一篇博客
+date: 2026-06-25
+summary: 这是一段会显示在博客列表里的摘要。
 ---
 
-© 2023-2025 Wenkang Zhang. All Rights Reserved.
+这里写正文。
+```
 
+然后在 `contents/blog.yml` 里加一条：
 
-### 3. Enjoy
+```yml
+- title: 我的第一篇博客
+  date: 2026-06-25
+  summary: 这是一段会显示在博客列表里的摘要。
+  tags: [Tag1, Tag2]
+  slug: my-first-post
+```
 
-Fire up a browser and go to `https://<username>.github.io`
+本地访问地址：
 
+```text
+http://localhost:8000/post.html?slug=my-first-post
+```
 
+## 部署
 
-## License
+这个仓库面向 GitHub Pages，通常直接推送到 `main` 就可以。
 
-Copyright Sen Li, 2023. Licensed under an MIT license. You can copy and mess with this template.
+常用命令：
+
+```powershell
+git add .
+git commit -m "Update homepage"
+git push origin main
+```
+
+如果仓库名是 `<username>.github.io`，GitHub Pages 一般会自动更新。
+
+## 这次整理做了什么
+
+- 删除了旧的 `build.py`
+- 删除了旧的 `deploy.bat`
+- 删除了重复的 `DEVELOPMENT.md`
+- 删除了生成产物 `posts/gs-sim2real.html`
+- 把博客链接从静态 `html` 改成了 `slug` 方式
+- 把使用说明统一收敛到这份 `README.md`
+
+## 额外说明
+
+- `_config.yml` 先保留，因为 GitHub Pages 对直接访问 `posts/*.md` 仍然有帮助
+- 现在博客正文的唯一源文件就是 `posts/*.md`
+- 现在不再需要“先生成 HTML 再预览”的流程

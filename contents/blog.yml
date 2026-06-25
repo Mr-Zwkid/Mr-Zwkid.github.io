@@ -1,9 +1,8 @@
-# Blog posts data (edit this file to add posts)
-# You can also keep using contents/blog.md for long intro; this YAML drives the list below it.
-# Example fields: title, date (YYYY-MM-DD), summary, tags, link
+# Blog posts data
+# Recommended workflow:
+# 1. create posts/<slug>.md
+# 2. write title/date/summary/tags in front matter
+# 3. add only the slug here
+# Optional fields here override front matter when needed
 
-- title: Towards GS-based Simulation
-  date: 
-  summary: summary of the internship project in Paxini
-  tags: [Robotics, GS, Sim2Real]
-  link: posts/gs-sim2real.html
+- slug: gs-sim2real
