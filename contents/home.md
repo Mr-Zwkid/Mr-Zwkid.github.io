@@ -11,20 +11,22 @@
     </a>
 </div>
 
-Hello, I am Wenkang Zhang, a coming PhD student under the joint program of [SQZ](https://www.sqz.ac.cn/en) and SJTU [SAI](https://soai.sjtu.edu.cn/). I am fortunate to be advised by Prof. [Yang Gao](https://yang-gao.weebly.com/) and thrilled to explore physical intelligence in this great era. 
+Hello, I am Wenkang Zhang, a first-year PhD student under the joint program of [SQZ](https://www.sqz.ac.cn/en) and SJTU [SAI](https://soai.sjtu.edu.cn/). I am fortunate to be advised by Prof. [Yang Gao](https://yang-gao.weebly.com/) and thrilled to explore general physical intelligence in this great era. 
 
-Previously, I received my bachelor's degree from [Department of Electronic Engineering](https://icisee.sjtu.edu.cn/) at [Shanghai Jiao Tong University](https://en.sjtu.edu.cn/). I've carried out research on 3DGS and its extensions (dynamic/compact) in [SJTU Media Lab](https://medialab.sjtu.edu.cn/), supervised by Prof. [Zhengxue Cheng](https://medialab.sjtu.edu.cn/author/zhengxue-cheng/) and Prof. [Li Song](https://medialab.sjtu.edu.cn/author/li-song/). I've also worked as an intern in [Paxini Tech](https://paxini.com/) (Shanghai), where I focus on GS-involved Real2Sim2Real for robotic data generation. 
+Previously, I received my bachelor's degree from [EE Department](https://icisee.sjtu.edu.cn/) of [Shanghai Jiao Tong University](https://en.sjtu.edu.cn/), where I've conducted research on 3DGS (dynamic/compact) guided by Prof. [Zhengxue Cheng](https://medialab.sjtu.edu.cn/author/zhengxue-cheng/) and Prof. [Li Song](https://medialab.sjtu.edu.cn/author/li-song/). I've also interned in [Paxini Tech](https://paxini.com/us/) and [Sharpa Robotics](https://www.sharpa.com/).
+
+<!-- , where I focus on GS-involved Real2Sim2Real for robotic data generation.  -->
 
 <!-- Previously I also participated in several school-level research projects, including robotic grasping detection (advised by [Xinwu Liang](https://www.aero.sjtu.edu.cn/szdw/szml/51)) and submersible development (advised by [Jianping He](https://automation.sjtu.edu.cn/JPHE)).  -->
 
 
 
-#### Research Interests
-Robot Learning; Multimodal Sensing
+#### Research Interest
+Robot Learning; Multimodal Learning; Dexterous Manipulation
 
 #### Education
-- B.E., Information Engineering, Shanghai Jiao Tong University, 2022-2026.
 - Ph.D, Computer Science, Shanghai Jiao Tong University & Shanghai Qi Zhi Institute, 2026-2031(expected).
+- B.E., Information Engineering, Shanghai Jiao Tong University, 2022-2026.
 
 #### News
 
