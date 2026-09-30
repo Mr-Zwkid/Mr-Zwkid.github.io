@@ -29,8 +29,8 @@ Robot Learning; Multimodal Learning; Dexterous Manipulation
 - B.E., Information Engineering, Shanghai Jiao Tong University, 2022-2026.
 
 #### News
-
-- `[25.11]` D-FCGS is accepted by AAAI-26. See you in Singapore!
+- `[26.09]` EgoTac is accepted by NeurIPS 2026. See you in Sydney!
+- `[25.11]` D-FCGS is accepted by AAAI 2026. See you in Singapore !
 
 
 <!-- cd C:\Users\86151\Desktop\Mr-Zwkid.github.io
