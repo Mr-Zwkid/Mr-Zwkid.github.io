@@ -10,6 +10,8 @@
     <div class="pub-tldr">TL;DR: A unified visual-tactile dataset and a generalizable model for predicting dense tactile signals from egocentric human videos in the wild.</div>
     <div class="pub-links">
       <a href="https://arxiv.org/abs/2608.15060">arXiv</a>
+      <a href="https://egotac.github.io/">project</a>
+      <a href="https://github.com/Mr-Zwkid/EgoTac">code</a>
     </div>
   </div>
 </div>
