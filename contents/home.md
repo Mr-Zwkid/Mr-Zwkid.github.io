@@ -4,7 +4,7 @@
         <i class="bi bi-envelope-fill"></i>
     </a>
     <a href="https://scholar.google.com/citations?user=-WwtynYAAAAJ" class="social-icon" title="Google Scholar">
-        <i class="bi bi-google"></i>
+        <i class="ai ai-google-scholar" aria-hidden="true"></i>
     </a>
     <a href="https://github.com/Mr-Zwkid" class="social-icon" title="GitHub">
         <i class="bi bi-github"></i>
@@ -30,7 +30,7 @@ Robot Learning; Multimodal Learning; Dexterous Manipulation
 
 #### News
 - `[26.09]` EgoTac is accepted by NeurIPS 2026. See you in Sydney!
-- `[25.11]` D-FCGS is accepted by AAAI 2026. See you in Singapore !
+- `[25.11]` D-FCGS is accepted by AAAI 2026. See you in Singapore!
 
 
 <!-- cd C:\Users\86151\Desktop\Mr-Zwkid.github.io
